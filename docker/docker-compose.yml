@@ -12,13 +12,12 @@ services:
             - MYSQL_ROOT_PASSWORD=welcome1
     volumes:
             - ./database/startup:/docker-entrypoint-initdb.d
-            - /data:/var/lib/mysql
-  app:
+            - /data2:/var/lib/mysql
+  php:
     image: phpmyadmin/phpmyadmin:latest
     links:
       - db
     ports:
       - 80:80
     environment:
-      - PMA_ARBITRARY=1
       - PMA_HOST=db
